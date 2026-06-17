@@ -1,0 +1,1 @@
+Géron, A. (2025). Hands-on machine learning with Scikit-Learn and PyTorch: Concepts, tools, and techniques to build intelligent systems (1st ed.). O'Reilly Media.  
