@@ -1,0 +1,74 @@
+// Secuencia de Constitución de Modelo Predictivo
+digraph Modelo_Predictivo_Dengue {
+	compound=true rankdir=TB size="10,12"
+	node [color="#2B3E50" fillcolor="#34495E" fontcolor=white fontname=Helvetica shape=box style="filled, rounded"]
+	edge [color="#7F8C8D" fontname=Helvetica fontsize=10]
+	subgraph cluster_0 {
+		bgcolor="#EAECEE" color="#BDC3C7" label="1. Obtención de Datos" style=filled
+		pandas [label="Lectura y Estructuración
+(pandas)" fillcolor="#1F618D"]
+	}
+	subgraph cluster_1 {
+		bgcolor="#EAF2F8" color="#A9CCE3" label="2. Reducción Dimensional / Selección de Atributos" style=filled
+		pca [label="PCA
+(Lineal/No supervisado)" fillcolor="#2980B9"]
+		pearson [label="Correlación de Pearson
+(Lineal)" fillcolor="#2980B9"]
+		spearman [label="Correlación de Spearman
+(No lineal/Monótona)" fillcolor="#2980B9"]
+		lasso [label="Regularización Lasso
+(L1)" fillcolor="#2980B9"]
+		elastic [label="Elastic Net
+(L1 + L2)" fillcolor="#2980B9"]
+	}
+	subgraph cluster_2 {
+		bgcolor="#E8F8F5" color="#A3E4D7" label="3. Escalamiento de Atributos" style=filled
+		scaler [label="StandardScaler
+(sklearn)" fillcolor="#16A085"]
+	}
+	subgraph cluster_3 {
+		bgcolor="#FEF9E7" color="#F9E79F" label="4. Entrenamiento del Modelo (Regresión)" style=filled
+		dt [label="Árbol de Decisión" fillcolor="#D4AC0D"]
+		rf [label="Random Forest" fillcolor="#D4AC0D"]
+		xgboost [label="XGBoost / Gradient Boosting" fillcolor="#D4AC0D"]
+		lgbm [label=LightGBM fillcolor="#D4AC0D"]
+		svm [label="SVM (SVR)" fillcolor="#D4AC0D"]
+		nn [label="Redes Neuronales
+(MLP / Deep Learning)" fillcolor="#D4AC0D"]
+	}
+	subgraph cluster_4 {
+		bgcolor="#FADBD8" color="#F5B7B1" label="5. Medición de Desempeño" style=filled
+		mae [label="MAE
+(Error Absoluto Medio)" fillcolor="#C0392B"]
+		rmse [label="RMSE
+(Raíz del Error Cuadrático Medio)" fillcolor="#C0392B"]
+	}
+	pandas -> pca
+	pandas -> pearson
+	pandas -> spearman
+	pandas -> lasso
+	pandas -> elastic
+	pca -> scaler
+	pearson -> scaler
+	spearman -> scaler
+	lasso -> scaler
+	elastic -> scaler
+	scaler -> dt
+	scaler -> rf
+	scaler -> xgboost
+	scaler -> lgbm
+	scaler -> svm
+	scaler -> nn
+	dt -> mae
+	dt -> rmse
+	rf -> mae
+	rf -> rmse
+	xgboost -> mae
+	xgboost -> rmse
+	lgbm -> mae
+	lgbm -> rmse
+	svm -> mae
+	svm -> rmse
+	nn -> mae
+	nn -> rmse
+}
