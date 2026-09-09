@@ -1,0 +1,59 @@
+{
+    "selected_features": [
+        "casos_dengue_lag_1",
+        "casos_dengue_lag_2",
+        "dengue_ma_3w"
+    ],
+    "X_augmented_columns": [
+        "casos_dengue_lag_1",
+        "casos_dengue_lag_2",
+        "casos_dengue_lag_3",
+        "casos_dengue_lag_4",
+        "casos_dengue_lag_5",
+        "casos_dengue_lag_6",
+        "casos_dengue_lag_7",
+        "casos_dengue_lag_8",
+        "casos_dengue_lag_9",
+        "casos_dengue_lag_10",
+        "casos_dengue_lag_11",
+        "casos_dengue_lag_12",
+        "dengue_lag_mean",
+        "dengue_lag_std",
+        "dengue_lag_sum",
+        "dengue_lag_max",
+        "dengue_lag_min",
+        "dengue_lag_median",
+        "dengue_trend_short",
+        "dengue_trend_medium",
+        "dengue_trend_long",
+        "dengue_accel",
+        "dengue_ratio_1w",
+        "dengue_ratio_4w",
+        "dengue_ma_3w",
+        "dengue_ma_4w",
+        "dengue_dev_ma",
+        "dengue_growth_positive",
+        "dengue_growth_high",
+        "dengue_level_high",
+        "dengue_peak_risk"
+    ],
+    "best_params": {
+        "kernel": "rbf",
+        "gamma": 0.1,
+        "epsilon": 0.2,
+        "C": 50
+    },
+    "best_metrics": {
+        "mae": 7.375572909296704,
+        "r2": 0.7464945083922001,
+        "rmse": 10.563831806528516,
+        "peak_mae": 21.427686800169493
+    },
+    "train_mae": 5.797359875713047,
+    "test_mae": 5.613718712544475,
+    "train_r2": 0.8446771695468757,
+    "test_r2": 0.8768788368129039,
+    "overfit_gap": -0.1836411631685717,
+    "train_peak_mae": 13.195467690511215,
+    "test_peak_mae": 17.394357221802274
+}
