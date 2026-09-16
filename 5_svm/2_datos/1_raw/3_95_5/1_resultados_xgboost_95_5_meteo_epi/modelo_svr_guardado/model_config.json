@@ -1,40 +1,15 @@
 {
     "selected_features": [
-        "temp_lag_1",
-        "temp_lag_11",
-        "temp_max_lag_8",
-        "temp_max_lag_10",
         "temp_min_lag_1",
-        "temp_min_lag_3",
-        "hum_esp_lag_1",
+        "temp_min_lag_2",
         "hum_esp_lag_2",
-        "hum_esp_lag_3",
-        "hum_rel_lag_3",
-        "hum_rel_lag_4",
-        "prec_lag_3",
-        "prec_lag_6",
-        "soi_lag_8",
-        "soi_lag_9",
-        "soi_lag_10",
-        "soi_lag_11",
-        "sst_lag_11",
         "casos_dengue_lag_1",
         "casos_dengue_lag_2",
         "casos_dengue_lag_3",
-        "casos_dengue_lag_4",
-        "casos_dengue_lag_6",
-        "casos_dengue_lag_8",
-        "casos_dengue_lag_9",
-        "casos_dengue_lag_10",
-        "temp_max_hum_rel",
         "dias_lluvia_hum_rel",
-        "temp_max_lag_std",
-        "temp_min_lag_std",
-        "dias_lluvia_lag_std",
         "dengue_lag_mean",
         "dengue_lag_std",
-        "dengue_lag_sum",
-        "dengue_trend_8weeks"
+        "dengue_lag_sum"
     ],
     "X_augmented_columns": [
         "semana_epi",
@@ -437,28 +412,23 @@
         "dengue_trend_8weeks"
     ],
     "best_params": {
-        "n_estimators": 200,
-        "max_depth": 3,
-        "learning_rate": 0.01,
-        "subsample": 0.8,
-        "colsample_bytree": 0.7,
-        "min_child_weight": 5,
-        "gamma": 0.3,
-        "reg_alpha": 0.1,
-        "reg_lambda": 2.0,
-        "random_state": 42
+        "kernel": "rbf",
+        "gamma": 0.1,
+        "epsilon": 0.2,
+        "degree": 4,
+        "C": 50
     },
     "best_metrics": {
-        "mae": 6.431570529937744,
-        "r2": 0.872859001159668,
-        "rmse": 8.773247924821835,
-        "peak_mae": 14.18945598602295
+        "mae": 6.693712110539612,
+        "r2": 0.7601459321989598,
+        "rmse": 10.2754614951405,
+        "peak_mae": 22.358825240837763
     },
-    "train_mae": 1.7918424606323242,
-    "test_mae": 6.803560256958008,
-    "train_r2": 0.9684197902679443,
-    "test_r2": 0.8128347396850586,
-    "overfit_gap": 5.011717796325684,
-    "train_peak_mae": 4.2375383377075195,
-    "test_peak_mae": 14.264925956726074
+    "train_mae": 4.136131248510408,
+    "test_mae": 7.585548300823089,
+    "train_r2": 0.8872781323817465,
+    "test_r2": 0.7832206906227475,
+    "overfit_gap": 3.4494170523126817,
+    "train_peak_mae": 9.388299128655406,
+    "test_peak_mae": 22.85690615056388
 }

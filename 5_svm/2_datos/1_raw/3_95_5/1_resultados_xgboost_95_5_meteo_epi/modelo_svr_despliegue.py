@@ -1,6 +1,6 @@
 """
-Script de despliegue del modelo de predicción de casos de dengue
-Generado automáticamente - 2026-09-16 10:52:54
+Script de despliegue del modelo SVR para predicción de casos de dengue
+Generado automáticamente - 2026-09-16 18:33:28
 
 Este script permite cargar el modelo entrenado y realizar predicciones
 sobre nuevos datos con el mismo formato que los datos de entrenamiento.
@@ -12,10 +12,11 @@ import pickle
 import json
 import os
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVR
 
 class DengueModelDeployment:
     """
-    Clase para desplegar el modelo de predicción de casos de dengue
+    Clase para desplegar el modelo SVR de predicción de casos de dengue
     """
     def __init__(self, model_dir):
         """
@@ -35,9 +36,9 @@ class DengueModelDeployment:
         with open(os.path.join(self.model_dir, 'scaler.pkl'), 'rb') as f:
             self.scaler = pickle.load(f)
 
-        # Cargar modelo XGBoost
-        with open(os.path.join(self.model_dir, 'xgb_model.pkl'), 'rb') as f:
-            self.xgb_model = pickle.load(f)
+        # Cargar modelo SVR
+        with open(os.path.join(self.model_dir, 'svr_model.pkl'), 'rb') as f:
+            self.svr_model = pickle.load(f)
 
         # Cargar configuración
         with open(os.path.join(self.model_dir, 'model_config.json'), 'r') as f:
@@ -48,7 +49,7 @@ class DengueModelDeployment:
             self.feature_names = config['feature_names']
             self.best_params = config.get('best_params', {})
 
-        print("✅ Modelo cargado exitosamente")
+        print("✅ Modelo SVR cargado exitosamente")
         print(f"   Características seleccionadas: {len(self.selected_features)}")
         print(f"   Hiperparámetros: {self.best_params}")
 
@@ -196,7 +197,7 @@ class DengueModelDeployment:
         X_final = X_scaled[self.selected_features]
 
         # Predecir
-        predictions = self.xgb_model.predict(X_final)
+        predictions = self.svr_model.predict(X_final)
 
         return predictions
 
@@ -227,18 +228,18 @@ class DengueModelDeployment:
 
 if __name__ == "__main__":
     print("="*60)
-    print("SCRIPT DE DESPLIEGUE DEL MODELO DE DENGUE")
+    print("SCRIPT DE DESPLIEGUE DEL MODELO SVR PARA DENGUE")
     print("="*60)
 
     # Ruta del modelo
-    model_dir = r"C:\Users\marco\Documentos\investigacion\machine_learning_idalina\3_xgboost\2_datos\1_raw\1_80_20\1_resultados_xgboost_80_20_meteo_epi\modelo_guardado_optimizado"
+    model_dir = r"C:\Users\marco\Documentos\investigacion\machine_learning_idalina\5_svm\2_datos\1_raw\3_95_5\1_resultados_xgboost_95_5_meteo_epi\modelo_svr_guardado"
 
     # Inicializar modelo
     model = DengueModelDeployment(model_dir)
 
     # Ejemplo de uso con datos de prueba
     print("\nCargando datos de prueba...")
-    test_path = r"C:\Users\marco\Documentos\investigacion\machine_learning_idalina\3_xgboost\2_datos\1_raw\1_80_20\2_meteo_epi_2021-2026_1_rezagos_meteo_epi_test_90_10.xlsx"
+    test_path = r"C:\Users\marco\Documentos\investigacion\machine_learning_idalina\5_svm\2_datos\1_raw\3_95_5\2_meteo_epi_2021-2026_1_rezagos_meteo_epi_test_90_10.xlsx"
     test_data = pd.read_excel(test_path)
 
     # Separar variables predictoras
